@@ -6,12 +6,17 @@ class Costumer(object):
         self.nameclient=nameclient
         self.address=address
         self.phone=phone
-        self.registered_by=registered_by  
+        self.registered_by=registered_by
     def Show_info(self,nameclient):
         consultacliente =open("costumers.json", "r")
         datacliente =json.load(consultacliente)
         if nameclient in datacliente :
-            print (datacliente[nameclient])
+            print ('\nInformações do cliente: ' )
+            x = datacliente[nameclient] 
+            print(f'Nome do cliente: {x["nameclient"]} ')
+            print(f'Email: {x["address"]} ')
+            print(f'Telefone: {x["phone"]} ')
+            print(f'registered_by: {x["registered_by"]} ')
     
     def save_in_file(self,nameclient,address,phone,registered_by):
         if os.path.isfile("costumers.json"): # caso já exista o arquivo
